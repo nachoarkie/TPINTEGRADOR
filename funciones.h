@@ -18,12 +18,24 @@ int CargarDados(int dado[],int tam);
 
 //FUNCIONES//
 void menu(){
-         rlutil::locate(47,9);std::cout<< "Ingrese una opcion:"<<std::endl;
-         rlutil::locate(45,10);std::cout<<"1-    Un jugador."<<std::endl;
-         rlutil::locate(45,11);std::cout<<"2-   Dos jugadores."<<std::endl;
-         rlutil::locate(45,12);std::cout<<"3- Puntuacion mas alta."<<std::endl;
-         rlutil::locate(45,13);std::cout<<"4-   Modo simulado."<<std::endl;
-         rlutil::locate(45,14);std::cout<<"0-       Salir."<<std::endl;
+                rlutil::setColor(rlutil::WHITE);
+                rlutil::locate(38,1);std::cout<<"######  ### ### ######   # ###   ##### "<<std::endl;
+                rlutil::locate(38,2);std::cout<<"####### ### ### ####### ####### #######"<<std::endl;
+                rlutil::locate(38,3);std::cout<<"### ### ### ### ### ### ### ### ### ###"<<std::endl;
+                rlutil::locate(38,4);std::cout<<"######  ### ### ### ### ###     ### ###"<<std::endl;
+                rlutil::locate(38,5);std::cout<<"### ### ### ### ### ### ### ### ### ###"<<std::endl;
+                rlutil::locate(38,6);std::cout<<"####### ####### ### ### ####### #######"<<std::endl;
+                rlutil::locate(38,7);std::cout<<"######   #####  ### ###  #####   ##### "<<std::endl;
+                rlutil::setColor(rlutil::BLACK);
+
+
+
+         rlutil::locate(47,12);std::cout<< "Ingrese una opcion:"<<std::endl;
+         rlutil::locate(45,13);std::cout<<"1-    Un jugador."<<std::endl;
+         rlutil::locate(45,14);std::cout<<"2-   Dos jugadores."<<std::endl;
+         rlutil::locate(45,15);std::cout<<"3- Puntuacion mas alta."<<std::endl;
+         rlutil::locate(45,16);std::cout<<"4-   Modo simulado."<<std::endl;
+         rlutil::locate(45,17);std::cout<<"0-       Salir."<<std::endl;
 
 }
 
@@ -180,4 +192,4 @@ int CargarDados(int dado[],int tam){
 
 
 
-#endif // FUNCIONES_H_INCLUDED
+#endif
