@@ -15,22 +15,14 @@ int main()
 {
     rlutil::setBackgroundColor(rlutil::LIGHTBLUE);
     rlutil::setColor(rlutil::BLACK);
-
-srand(time(0));
+    srand(time(0));
 
  int opc, j=0,i,puntajeronda, puntajetot=0,contbunco=0, sumadados,contfail=0, puntajefinal=0, descuento=0;
     const int tam=3;
-
             int puntajetabla[3],buncotabla[3], dado[3];
-                string nombretop1, nombretop2, nombretop3;
+                string nombretop[3];
 
-                    for (i=0;i<3;i++){
-                    puntajetabla[i]=0;
-                    buncotabla[i]=0;
-                    }
-                    nombretop1="NO SCORE";
-                    nombretop2="NO SCORE";
-                    nombretop3="NO SCORE";
+                    CargarTabla(puntajetabla,buncotabla,nombretop);
 
 
 
@@ -133,30 +125,30 @@ for (i=1;i<=1;i++){
             if (puntajefinal>puntajetabla[0]){
             puntajetabla[2]=puntajetabla[1];
             buncotabla[2]=buncotabla[1];
-            nombretop3=nombretop2;
+            nombretop[2]=nombretop[1];
 
             puntajetabla[1]=puntajetabla[0];
             buncotabla[1]=buncotabla[0];
-            nombretop2=nombretop1;
+            nombretop[1]=nombretop[0];
 
             puntajetabla[0]=puntajefinal;
             buncotabla[0]=contbunco;
-            nombretop1=nombre1;
+            nombretop[0]=nombre1;
             }
 
             else if (puntajefinal>puntajetabla[1]){
             puntajetabla[2]=puntajetabla[1];
             buncotabla[2]=buncotabla[1];
-            nombretop3=nombretop2;
+            nombretop[2]=nombretop[1];
 
             puntajetabla[1]=puntajefinal;
             buncotabla[1]=contbunco;
-            nombretop2=nombre1;
+            nombretop[1]=nombre1;
             }
             else if(puntajefinal>puntajetabla[2]){
             puntajetabla[2]=puntajefinal;
             buncotabla[2]=contbunco;
-            nombretop3=nombre1;
+            nombretop[2]=nombre1;
             }
 contfail=0,puntajefinal=0;
 
@@ -330,10 +322,10 @@ case 3:
          rlutil::locate(50,9);cout<<"TABLA DE PUNTUACIONES"<<endl;
          rlutil::locate(27,13);cout<<"PUNTAJE";rlutil::locate(58,13);cout<<"NOMBRE";rlutil::locate(83,13);cout<<"CANT BUNCOS"<<endl;
          rlutil::setColor(rlutil::LIGHTGREEN);
-         rlutil::locate(1,15);cout<<"1-";rlutil::locate(30,15);cout<<puntajetabla[0];rlutil::locate(57,15);cout<<nombretop1;rlutil::locate(87,15);cout<<buncotabla[0]<<endl;
+         rlutil::locate(1,15);cout<<"1-";rlutil::locate(30,15);cout<<puntajetabla[0];rlutil::locate(57,15);cout<<nombretop[0];rlutil::locate(87,15);cout<<buncotabla[0]<<endl;
          rlutil::setColor(rlutil::GREEN);
-         rlutil::locate(1,17);cout<<"2-";rlutil::locate(30,17);cout<<puntajetabla[1];rlutil::locate(57,17);cout<<nombretop2;rlutil::locate(87,17);cout<<buncotabla[1]<<endl;
-         rlutil::locate(1,19);cout<<"3-";rlutil::locate(30,19);cout<<puntajetabla[2];rlutil::locate(57,19);cout<<nombretop3;rlutil::locate(87,19);cout<<buncotabla[2]<<endl;
+         rlutil::locate(1,17);cout<<"2-";rlutil::locate(30,17);cout<<puntajetabla[1];rlutil::locate(57,17);cout<<nombretop[1];rlutil::locate(87,17);cout<<buncotabla[1]<<endl;
+         rlutil::locate(1,19);cout<<"3-";rlutil::locate(30,19);cout<<puntajetabla[2];rlutil::locate(57,19);cout<<nombretop[2];rlutil::locate(87,19);cout<<buncotabla[2]<<endl;
          rlutil::setColor(rlutil::BLACK);
   rlutil::locate(43,30);break;
 
@@ -348,6 +340,7 @@ case 3:
           rlutil::locate(38,15);cout <<"Ingrese cantidad de lanzamientos a simular: "<<endl;
           rlutil::locate(57,16);cin>> nsim;
         system("cls");
+
           for (i=1;i<=nsim;i++){
             rlutil::locate(42,15);cout<<"Ingrese valor del primer dado: "<<endl;
             rlutil::locate(57,16);cin>>dado[0];
@@ -397,10 +390,18 @@ case 3:
          rlutil::locate(41,29);system("pause");
          system("cls");
           }
+          rlutil::locate(27,10);cout<<" ***************************************************************"<<endl;
+         rlutil::locate(39,11);cout<<"    PUNTAJE SIMULADO TOTAL: "<<puntajetot<<" PUNTOS."<<endl;
+         rlutil::locate(41,12);cout<<"    CANTIDAD DE BUNCOS: "<<buncosim<<"."<<endl;
+         rlutil::locate(39,13);cout<<"    CANTIDAD DE TIROS FALLIDOS: "<<contfail<<"."<<endl;
+         rlutil::locate(37,14);cout<<"    CANTIDAD DE LANZAMIENTOS SIMULADOS: "<<nsim<<"."<<endl;
+         rlutil::locate(27,15);cout<<" ***************************************************************"<<endl;
+        rlutil::locate(43,30);system("pause");
+         system("cls");
 
-    contfail=0;
+    contfail=0,puntajetot=0;
  }
- break;
+    rlutil::locate(43,30);break;
 
 
 
@@ -412,7 +413,7 @@ case 3:
 
 rlutil::setColor(rlutil::BLACK);
  rlutil::locate(41,29);return 0;
- break;
+ rlutil::locate(41,30);break;
 
 
  }
@@ -423,3 +424,4 @@ rlutil::setColor(rlutil::BLACK);
 
     return 0;
 }
+
