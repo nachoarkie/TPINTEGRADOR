@@ -37,7 +37,7 @@ srand(time(0));
  while (true){
 
         menu();
-         rlutil::locate(56,15);cin>>opc;
+         rlutil::locate(56,19);cin>>opc;
             system("cls");
 
 
@@ -54,12 +54,12 @@ switch(opc){
 for (i=1;i<=1;i++){
          do{
          j++;
-
-         rlutil::locate(30,1);cout<<"TURNO DE "<< nombre1<<" .";  cout<<" | "; cout<<"RONDA N°"<<i; cout<<" | "; cout<< "PUNTAJE ACUMULADO: " << puntajetot<< endl;
+            TirarDados();
+         rlutil::locate(30,1);cout<<"TURNO DE "<< nombre1<<" .";  cout<<" | "; cout<<"RONDA NÂ°"<<i; cout<<" | "; cout<< "PUNTAJE ACUMULADO: " << puntajetot<< endl;
          rlutil::locate(20,2);cout<<"--------------------------------------------------------------------"<<endl;
          rlutil::locate(42,3);cout<<"VECES QUE OBTUVO BUNCO: "<< contbunco<<endl;
          rlutil::locate(25,4);cout<<"----------------------------------------------------------"<<endl;
-         rlutil::locate(47,5);cout<<"LANZAMIENTO N°"<<j<<endl;
+         rlutil::locate(47,5);cout<<"LANZAMIENTO NÂ°"<<j<<endl;
          rlutil::locate(30,6);cout<<"------------------------------------------------"<<endl;
 
          CargarDados(dado,tam);
@@ -95,7 +95,7 @@ for (i=1;i<=1;i++){
          rlutil::locate(41,23);cout<<"| "<<"PUNTAJE DE LA RONDA: "<<puntajeronda<<" |"<<endl;
          rlutil::locate(41,24);cout<<" *************************"<<endl;
 
-         system("pause");
+         rlutil::locate(43,30);system("pause");
          system("cls");
          }
          while(puntajetot<21);
@@ -108,7 +108,7 @@ for (i=1;i<=1;i++){
          rlutil::locate(37,13);cout<<"    CANTIDAD DE TIROS FALLIDOS: "<<contfail<<"."<<endl;
          rlutil::locate(38,14);cout<<"    CANTIDAD DE LANZAMIENTOS: "<<j<<"."<<endl;
          rlutil::locate(38,15);cout<<"--------------------------------------"<<endl;
-         system("pause");
+         rlutil::locate(43,30);system("pause");
          system("cls");
 
             puntajefinal=puntajefinal+puntajetot;
@@ -163,7 +163,7 @@ contfail=0,puntajefinal=0;
 
 }
 
- break;
+ rlutil::locate(43,30);break;
 
 
 
@@ -194,11 +194,11 @@ contfail=0,puntajefinal=0;
         while (fallo[jugador]==falloant[jugador]&& puntajetot[0]<21 && puntajetot[1]<21){
         j++;
 
-         rlutil::locate(30,1);cout<<"TURNO DE "<< nombre[jugador]<<" .";  cout<<" | "; cout<<"RONDA N°"<<ronda; cout<<" | "; cout<< "PUNTAJE ACUMULADO: " << puntajetot[jugador]<< endl;
+         rlutil::locate(30,1);cout<<"TURNO DE "<< nombre[jugador]<<" .";  cout<<" | "; cout<<"RONDA NÂ°"<<ronda; cout<<" | "; cout<< "PUNTAJE ACUMULADO: " << puntajetot[jugador]<< endl;
          rlutil::locate(20,2);cout<<"--------------------------------------------------------------------"<<endl;
          rlutil::locate(42,3);cout<<"VECES QUE OBTUVO BUNCO: "<< contbunco[jugador-1]<<endl;
          rlutil::locate(25,4);cout<<"----------------------------------------------------------"<<endl;
-         rlutil::locate(47,5);cout<<"LANZAMIENTO N°"<<j<<endl;
+         rlutil::locate(47,5);cout<<"LANZAMIENTO NÂ°"<<j<<endl;
          rlutil::locate(30,6);cout<<"------------------------------------------------"<<endl;
 
          CargarDados(dado,tam);
@@ -270,7 +270,7 @@ contfail=0,puntajefinal=0;
         puntajefinal[jugador]=puntajefinal[jugador]+puntajetot[jugador];
 
         //aca va el cartel entre rondas//
-        rlutil::locate(49,12);cout<<" RONDA N° "<<ronda<<endl;
+        rlutil::locate(49,12);cout<<" RONDA NÂ° "<<ronda<<endl;
         rlutil::locate(23,13);cout<<" ***************************************************************"<<endl;
         rlutil::locate(45,14);cout<<" PUNTAJE DE "<<nombre[0]<<": "<<puntajetot[0]<<endl;
         rlutil::locate(44,15);cout<<" CANTIDAD DE BUNCOS "<<contbunco[1]<<endl;
@@ -319,7 +319,7 @@ contfail=0,puntajefinal=0;
     system("pause");
     system("cls");
  }
- break;
+ rlutil::locate(43,30);break;
 
 
 
@@ -330,12 +330,12 @@ case 3:
          rlutil::locate(50,9);cout<<"TABLA DE PUNTUACIONES"<<endl;
          rlutil::locate(27,13);cout<<"PUNTAJE";rlutil::locate(58,13);cout<<"NOMBRE";rlutil::locate(83,13);cout<<"CANT BUNCOS"<<endl;
          rlutil::setColor(rlutil::LIGHTGREEN);
-         cout<<"1-";rlutil::locate(30,15);cout<<puntajetabla[0];rlutil::locate(57,15);cout<<nombretop1;rlutil::locate(87,15);cout<<buncotabla[0]<<endl;
+         rlutil::locate(1,15);cout<<"1-";rlutil::locate(30,15);cout<<puntajetabla[0];rlutil::locate(57,15);cout<<nombretop1;rlutil::locate(87,15);cout<<buncotabla[0]<<endl;
          rlutil::setColor(rlutil::GREEN);
-         cout<<"2-";rlutil::locate(30,17);cout<<puntajetabla[1];rlutil::locate(57,17);cout<<nombretop2;rlutil::locate(87,17);cout<<buncotabla[1]<<endl;
-         cout<<"3-";rlutil::locate(30,19);cout<<puntajetabla[2];rlutil::locate(57,19);cout<<nombretop3;rlutil::locate(87,19);cout<<buncotabla[2]<<endl;
+         rlutil::locate(1,17);cout<<"2-";rlutil::locate(30,17);cout<<puntajetabla[1];rlutil::locate(57,17);cout<<nombretop2;rlutil::locate(87,17);cout<<buncotabla[1]<<endl;
+         rlutil::locate(1,19);cout<<"3-";rlutil::locate(30,19);cout<<puntajetabla[2];rlutil::locate(57,19);cout<<nombretop3;rlutil::locate(87,19);cout<<buncotabla[2]<<endl;
          rlutil::setColor(rlutil::BLACK);
- break;
+  rlutil::locate(43,30);break;
 
 
 
@@ -343,39 +343,40 @@ case 3:
 
  case 4:{ int buncosim=0, nsim;
 
-          cout <<"Modo simulacion:"<<endl;
-          cout <<"En este modo podra decidir el valor de los dados para simular jugadas."<<endl;
-          cout <<"Ingrese cantidad de lanzamientos a simular: "<<endl;
-          cin>> nsim;
+          rlutil::locate(50,9);cout <<"Modo simulacion:"<<endl;
+          rlutil::locate(27,13);cout <<"En este modo podra decidir el valor de los dados para simular jugadas."<<endl;
+          rlutil::locate(38,15);cout <<"Ingrese cantidad de lanzamientos a simular: "<<endl;
+          rlutil::locate(57,16);cin>> nsim;
         system("cls");
           for (i=1;i<=nsim;i++){
-            cout<<"Ingrese valor del primer dado: "<<endl;
-            cin>>dado[1];
+            rlutil::locate(42,15);cout<<"Ingrese valor del primer dado: "<<endl;
+            rlutil::locate(57,16);cin>>dado[0];
         system("cls");
-            cout<<"Ingrese valor del segundo dado: "<<endl;
-            cin>>dado[2];
+            rlutil::locate(42,15);cout<<"Ingrese valor del segundo dado: "<<endl;
+            rlutil::locate(57,16);cin>>dado[1];
         system("cls");
-            cout<<"Ingrese valor del tercer dado: "<<endl   ;
-            cin>>dado[3];
+            rlutil::locate(42,15);cout<<"Ingrese valor del tercer dado: "<<endl   ;
+            rlutil::locate(57,16);cin>>dado[2];
         system("cls");
 
 
-         sumadados=dado[1]+dado[2]+dado[3];
 
-            if (dado[1]==dado[2] && dado[2]==dado[3] && dado[1]==i){
+         sumadados=dado[0]+dado[1]+dado[2];
+
+            if (dado[0]==dado[1] && dado[1]==dado[2] && dado[0]==i){
             puntajeronda=21;
             buncosim++;
             }
-            else if (dado[1]==dado[2] && dado[2]==dado[3] && dado[1]!=i){
+            else if (dado[0]==dado[1] && dado[1]==dado[2] && dado[0]!=i){
             puntajeronda=5;
             }
             else if(sumadados%5==0){
             puntajeronda=3;
             }
-            else if (dado[1]==dado[2]-1 && dado[2]==dado[3]-1){
+            else if (dado[0]==dado[1]-1 && dado[1]==dado[2]-1){
             puntajeronda=2;
             }
-            else if(dado[1]==i||dado[2]==i||dado[3]==i){
+            else if(dado[0]==i||dado[1]==i||dado[2]==i){
             puntajeronda=1;
             }
             else{
@@ -387,12 +388,13 @@ case 3:
 
             puntajetot=puntajetot+puntajeronda;
 
-         cout<<" MODO SIMULADO"<<endl;
-         cout<<" *************************"<<endl;
-         cout<<"| "<<"PUNTAJE DE LA RONDA: "<<puntajeronda<<" |"<<endl;
-         cout<<"| "<<"OBTUVO UN TOTAL DE: "<<buncosim<<" BUNCOS |"<<endl;
-         cout<<" *************************"<<endl;
-         system("pause");
+         rlutil::locate(47,2);cout<<" MODO SIMULADO"<<endl;
+         GraficoDados(dado);
+         rlutil::locate(41,22);cout<<" *************************"<<endl;
+         rlutil::locate(43,23);cout<<"PUNTAJE DE LA RONDA: "<<puntajeronda<<"."<<endl;
+         rlutil::locate(41,24);cout<<"OBTUVO UN TOTAL DE: "<<buncosim<<" BUNCOS."<<endl;
+         rlutil::locate(41,25);cout<<" *************************"<<endl;
+         rlutil::locate(41,29);system("pause");
          system("cls");
           }
 
@@ -404,10 +406,12 @@ case 3:
 
 
 
- case 0: cout <<"Se cerrara el programa."<<endl;
+ case 0:
+     rlutil::setColor(rlutil::RED);
+     rlutil::locate(49,15);cout <<"Se cerrara el programa."<<endl;
 
-
- return 0;
+rlutil::setColor(rlutil::BLACK);
+ rlutil::locate(41,29);return 0;
  break;
 
 
@@ -419,4 +423,3 @@ case 3:
 
     return 0;
 }
-
