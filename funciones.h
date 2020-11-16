@@ -5,6 +5,8 @@
 //DESCRIPCION DE FUNCIONES//
 void menu();
 
+void CargarTabla(int puntajetabla[],int buncotabla[],std::string nombretop[]);
+
 int CargarVectores(int fallo[],int falloant[],int gano[],int contbunco[],int lanzamiento[],int puntajeronda[],int puntajetot[],int puntajefinal[],int descuento[],int tam2);
 
 int CalculadorDescuentos(int descuento[],int puntajefinal[],int fallo[],int tam2);
@@ -39,7 +41,17 @@ void menu(){
 
 }
 
+void CargarTabla(int puntajetabla[],int buncotabla[],std::string nombretop[]){
+    int i;
 
+    for (i=0;i<3;i++){
+                    puntajetabla[i]=0;
+                    buncotabla[i]=0;
+                    nombretop[i]="NO SCORE";
+                    }
+
+
+}
 
 int CargarVectores(int fallo[],int falloant[],int gano[],int contbunco[],int lanzamiento[],int puntajeronda[],int puntajetot[],int puntajefinal[],int descuento[],int tam2){
         int i=0;
