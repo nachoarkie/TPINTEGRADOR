@@ -13,7 +13,7 @@ using namespace std;
 
 int main()
 {
-    rlutil::setBackgroundColor(rlutil::LIGHTBLUE);
+    rlutil::setBackgroundColor(rlutil::MAGENTA);
     rlutil::setColor(rlutil::BLACK);
     srand(time(0));
 //DECLARACION DE VARIABLES//
@@ -421,12 +421,14 @@ case 15:
 
 //CERRAR JUEGO//
  case 17:
+     LlenarConsola();
      rlutil::setColor(rlutil::RED);
      rlutil::locate(49,15);cout <<"Se cerrara el programa."<<endl;
-
+     rlutil::setColor(rlutil::LIGHTRED);
+     rlutil::locate(52,20);cout <<"GRACIAS POR JUGAR"<<endl;
 rlutil::setColor(rlutil::BLACK);
- rlutil::locate(41,29);return 0;
- rlutil::locate(41,30);break;
+ rlutil::locate(41,27);return 0;
+ rlutil::locate(41,38);break;
 
 
  }
@@ -437,6 +439,4 @@ rlutil::setColor(rlutil::BLACK);
 
     return 0;
 }
-
-
 
