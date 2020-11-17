@@ -19,6 +19,7 @@ void GraficoDados(int dado[]);
 
 int CargarDados(int dado[],int tam);
 
+void LlenarConsola();
 
 //FUNCIONES//
 int menu(){
@@ -41,7 +42,7 @@ int menu(){
          rlutil::locate(45,15);std::cout<<"3- Puntuacion mas alta."<<std::endl;
          rlutil::locate(45,16);std::cout<<"4-   Modo simulado."<<std::endl;
          rlutil::locate(45,17);std::cout<<"0-       Salir."<<std::endl;
-         rlutil::locate(45,25);std::cout<<"Proyecto integrador hecho por Tadeo Descalzo."
+         rlutil::locate(34,25);std::cout<<"Proyecto integrador hecho por Tadeo Descalzo.";
 
          //MENU CON TECLAS//
          rlutil::locate(x,y);printf("*");
@@ -224,7 +225,20 @@ int CargarDados(int dado[],int tam){
          GraficoDados(dado);
 }
 
-
+void LlenarConsola(){
+    int i;
+    rlutil::setColor(rlutil::RED);
+    for (i=1;i<=15;i++){
+     rlutil::locate(1,i);std::cout<<"************************************************************************************************************************"<<std::endl;
+    Sleep(30);
+    }
+    rlutil::setColor(rlutil::LIGHTRED);
+    for (i=15;i<=30;i++){
+     rlutil::locate(1,i);std::cout<<"************************************************************************************************************************"<<std::endl;
+    Sleep(30);
+    }
+    rlutil::cls();
+}
 
 
 #endif // FIN FUNCIONES//
