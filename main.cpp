@@ -164,14 +164,14 @@ contfail=0,puntajefinal=0;
 
 
 //MODO 2 JUGADORES//
- case 14: {string nombre[3];
-         cout <<"Nuevo juego"<<endl;
-         cout <<"Dos Jugadores!"<<endl;
-         cout <<"Ingrese el nombre del jugador 1: "<<endl;
-         cin>>nombre[0];
+ case 14: {string nombre[2];
+         rlutil::locate(50,12);cout <<"Nuevo juego"<<endl;
+         rlutil::locate(50,13);cout <<"Dos Jugadores!"<<endl;
+         rlutil::locate(41,14);cout <<"Ingrese el nombre del jugador 1: "<<endl;
+         rlutil::locate(56,15);cin>>nombre[0];
          system("cls");
-         cout <<"Ingrese el nombre del jugador 2: "<<endl;
-         cin>>nombre[1];
+         rlutil::locate(41,12);cout <<"Ingrese el nombre del jugador 2: "<<endl;
+         rlutil::locate(56,13);cin>>nombre[1];
          system("cls");
         //DECLARACION DE VARIABLES DEL CASO//
          int fallo[2],falloant[2],contbunco[2],lanzamiento[2],puntajeronda[2],puntajetot[2],puntajefinal[2],descuento[2],j=0,ronda=0,jugador=0,gano,i;
@@ -188,6 +188,7 @@ contfail=0,puntajefinal=0;
 
         while (fallo[jugador]==falloant[jugador]&& puntajetot[0]<21 && puntajetot[1]<21){
         j++;
+        TirarDados();
         //TABLA DE LANZAMIENTO//
          rlutil::locate(30,1);cout<<"TURNO DE "<< nombre[jugador]<<" .";  cout<<" | "; cout<<"RONDA N°"<<ronda; cout<<" | "; cout<< "PUNTAJE ACUMULADO: " << puntajetot[jugador]<< endl;
          rlutil::locate(20,2);cout<<"--------------------------------------------------------------------"<<endl;
@@ -436,5 +437,6 @@ rlutil::setColor(rlutil::BLACK);
 
     return 0;
 }
+
 
 
