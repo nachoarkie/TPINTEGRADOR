@@ -227,4 +227,4 @@ int CargarDados(int dado[],int tam){
 
 
 
-#endif // FUNCIONES_H_INCLUDED
+#endif // FIN FUNCIONES//
