@@ -1,9 +1,11 @@
 #ifndef FUNCIONES_H_INCLUDED
 #define FUNCIONES_H_INCLUDED
 
-
+#define ABAJO 80
+#define ARRIBA 72
+#define ENTER 13
 //DESCRIPCION DE FUNCIONES//
-void menu();
+int menu();
 
 void CargarTabla(int puntajetabla[],int buncotabla[],std::string nombretop[]);
 
@@ -19,7 +21,8 @@ int CargarDados(int dado[],int tam);
 
 
 //FUNCIONES//
-void menu(){
+int menu(){
+    int x=40, y=13;
                 rlutil::setColor(rlutil::WHITE);
                 rlutil::locate(38,1);std::cout<<"######  ### ### ######   # ###   ##### "<<std::endl;
                 rlutil::locate(38,2);std::cout<<"####### ### ### ####### ####### #######"<<std::endl;
@@ -38,7 +41,22 @@ void menu(){
          rlutil::locate(45,15);std::cout<<"3- Puntuacion mas alta."<<std::endl;
          rlutil::locate(45,16);std::cout<<"4-   Modo simulado."<<std::endl;
          rlutil::locate(45,17);std::cout<<"0-       Salir."<<std::endl;
+         rlutil::locate(45,25);std::cout<<"Proyecto integrador hecho por Tadeo Descalzo."
 
+         //MENU CON TECLAS//
+         rlutil::locate(x,y);printf("*");
+         bool elegir=false;
+         while (!elegir){
+            if (_kbhit()){
+              rlutil::locate(x,y);printf(" ");
+              char tecla=_getch();
+              if (tecla==ENTER){elegir=true;return y;}
+              if (tecla==ARRIBA && y>13) rlutil::locate(x,y--);
+              if (tecla==ABAJO && y<17) rlutil::locate(x,y++);
+              rlutil::locate(x,y);printf("*");
+        }
+
+    }
 }
 
 void CargarTabla(int puntajetabla[],int buncotabla[],std::string nombretop[]){
@@ -53,13 +71,13 @@ void CargarTabla(int puntajetabla[],int buncotabla[],std::string nombretop[]){
 
 }
 
-int CargarVectores(int fallo[],int falloant[],int gano[],int contbunco[],int lanzamiento[],int puntajeronda[],int puntajetot[],int puntajefinal[],int descuento[],int tam2){
+int CargarVectores(int fallo[],int falloant[],int gano,int contbunco[],int lanzamiento[],int puntajeronda[],int puntajetot[],int puntajefinal[],int descuento[],int tam2){
         int i=0;
 
         for (i=0;i<2;i++){
             fallo[i]=0;
             falloant[i]=0;
-            gano[i]=0;
+            gano=0;
             lanzamiento[i]=0;
             puntajeronda[i]=0;
             puntajefinal[i]=0;
@@ -69,13 +87,18 @@ int CargarVectores(int fallo[],int falloant[],int gano[],int contbunco[],int lan
         }
 }
 
-int CalculadorDescuentos(int descuento[],int puntajefinal[],int fallo[],int tam2){
+int CalculadorDescuentos(int descuento[],int puntajefinal[],int fallo[],int gano){
 int i;
-for (i=0;i<=1;i++){
-        descuento[i]=fallo[i]*2;
-        puntajefinal[i]=puntajefinal[i]-descuento[i];
-    }
-
+if (gano==0){
+        descuento[gano]=fallo[gano]*2;
+        puntajefinal[gano]=puntajefinal[gano]-descuento[gano];
+        puntajefinal[1]=-999999;
+}
+else if(gano==1){
+    descuento[gano]=fallo[gano]*2;
+    puntajefinal[gano]=puntajefinal[gano]-descuento[gano];
+    puntajefinal[0]=-999999;
+}
 }
 
 void TirarDados(){
@@ -204,4 +227,4 @@ int CargarDados(int dado[],int tam){
 
 
 
-#endif
+#endif // FUNCIONES_H_INCLUDED
