@@ -439,4 +439,3 @@ rlutil::setColor(rlutil::BLACK);
 
     return 0;
 }
-
