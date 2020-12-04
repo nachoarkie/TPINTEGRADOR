@@ -21,18 +21,21 @@ int CargarDados(int dado[],int tam);
 
 void LlenarConsola();
 
+
 //FUNCIONES//
 int menu(){
-    int x=40, y=13;
+    int x=40, y=13, i;
                 rlutil::setColor(rlutil::WHITE);
-                rlutil::locate(38,1);std::cout<<"######  ### ### ######   # ###   ##### "<<std::endl;
-                rlutil::locate(38,2);std::cout<<"####### ### ### ####### ####### #######"<<std::endl;
-                rlutil::locate(38,3);std::cout<<"### ### ### ### ### ### ### ### ### ###"<<std::endl;
-                rlutil::locate(38,4);std::cout<<"######  ### ### ### ### ###     ### ###"<<std::endl;
+                rlutil::locate(38,3);std::cout<<"######  ### ### ######   # ###   ##### "<<std::endl;
+                rlutil::locate(38,4);std::cout<<"####### ### ### ####### ####### #######"<<std::endl;
                 rlutil::locate(38,5);std::cout<<"### ### ### ### ### ### ### ### ### ###"<<std::endl;
-                rlutil::locate(38,6);std::cout<<"####### ####### ### ### ####### #######"<<std::endl;
-                rlutil::locate(38,7);std::cout<<"######   #####  ### ###  #####   ##### "<<std::endl;
+                rlutil::locate(38,6);std::cout<<"######  ### ### ### ### ###     ### ###"<<std::endl;
+                rlutil::locate(38,7);std::cout<<"### ### ### ### ### ### ### ### ### ###"<<std::endl;
+                rlutil::locate(38,8);std::cout<<"####### ####### ### ### ####### #######"<<std::endl;
+                rlutil::locate(38,9);std::cout<<"######   #####  ### ###  #####   ##### "<<std::endl;
                 rlutil::setColor(rlutil::BLACK);
+
+
 
 
 
@@ -59,6 +62,9 @@ int menu(){
 
     }
 }
+
+
+
 
 void CargarTabla(int puntajetabla[],int buncotabla[],std::string nombretop[]){
     int i;
@@ -241,4 +247,4 @@ void LlenarConsola(){
 }
 
 
-#endif // FIN FUNCIONES//
+#endif // FUNCIONES_H_INCLUDED
