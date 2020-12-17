@@ -21,6 +21,13 @@ int CargarDados(int dado[],int tam);
 
 void LlenarConsola();
 
+void Estrellitas();
+
+int CalculadorPuntajes(int dado[],int contbunco[],int puntajeronda[],int fallo[],int jugador);
+
+void tablaPuntajes(int puntajefinal[],int puntajetabla[],int buncotabla[],std::string nombretop[],int jugador,std::string nombre[],int contbunco[]);
+
+int AcomodarDados(int dado[]);
 
 //FUNCIONES//
 int menu(){
@@ -246,5 +253,88 @@ void LlenarConsola(){
     rlutil::cls();
 }
 
+int CalculadorPuntajes(int dado[],int contbunco[],int puntajeronda[],int fallo[],int i,int jugador){
+       int sumadados=0;
+       AcomodarDados(dado);
+        sumadados=dado[0]+dado[1]+dado[2];
 
+            if (dado[0]==dado[1] && dado[1]==dado[2] && dado[0]==i){
+            puntajeronda[jugador]=21;
+            contbunco[jugador]++;
+            }
+            else if (dado[0]==dado[1] && dado[1]==dado[2] && dado[0]!=i){
+            puntajeronda[jugador]=5;
+            }
+            else if(sumadados%5==0){
+            puntajeronda[jugador]=3;
+            }
+            else if (dado[0]==dado[1]-1 && dado[1]==dado[2]-1){
+            puntajeronda[jugador]=2;
+            }
+            else if(dado[0]==i||dado[1]==i||dado[2]==i){
+            puntajeronda[jugador]=1;
+            }
+            else{
+            puntajeronda[jugador]=0;
+            fallo[jugador]++;
+            }
+
+}
+
+int AcomodarDados(int dado[]){
+int mendado,segdado=0,maydado=0,i=0;
+
+maydado=dado[0];
+
+for (i=1;i<=2;i++){
+    if (dado[i]>maydado){
+        mendado=segdado;
+        segdado=maydado;
+        maydado=dado[i];
+    }
+    else if (dado[i]>segdado){
+        mendado=segdado;
+        segdado=dado[i];
+    }
+    else if (dado[i]>mendado){
+        mendado=dado[i];
+    }
+}
+
+dado[0]=mendado;
+dado[1]=segdado;
+dado[2]=maydado;
+
+}
+
+void tablaPuntajes(int puntajefinal[],int puntajetabla[],int buncotabla[],std::string nombretop[],int jugador,std::string nombre[],int contbunco[]){
+if (puntajefinal[jugador]>puntajetabla[0]){
+            puntajetabla[2]=puntajetabla[1];
+            buncotabla[2]=buncotabla[1];
+            nombretop[2]=nombretop[1];
+
+            puntajetabla[1]=puntajetabla[0];
+            buncotabla[1]=buncotabla[0];
+            nombretop[1]=nombretop[0];
+
+            puntajetabla[0]=puntajefinal[jugador];
+            buncotabla[0]=contbunco[jugador];
+            nombretop[0]=nombre[jugador];
+            }
+
+            else if (puntajefinal[jugador]>puntajetabla[1]){
+            puntajetabla[2]=puntajetabla[1];
+            buncotabla[2]=buncotabla[1];
+            nombretop[2]=nombretop[1];
+
+            puntajetabla[1]=puntajefinal[jugador];
+            buncotabla[1]=contbunco[jugador];
+            nombretop[1]=nombre[jugador];
+            }
+            else if(puntajefinal[jugador]>puntajetabla[2]){
+            puntajetabla[2]=puntajefinal[jugador];
+            buncotabla[2]=contbunco[jugador];
+            nombretop[2]=nombre[jugador];
+            }
+}
 #endif // FUNCIONES_H_INCLUDED
