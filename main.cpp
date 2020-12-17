@@ -17,7 +17,8 @@ int main()
     rlutil::setColor(rlutil::BLACK);
     srand(time(0));
 //DECLARACION DE VARIABLES//
- int opc, j=0,i,puntajeronda, puntajetot=0,contbunco=0, sumadados,contfail=0, puntajefinal=0, descuento=0;
+ int opc, j=0,i,puntajeronda[2], puntajetot[2],contbunco=0, sumadados,contfail=0, puntajefinal=0, descuento=0;
+
     const int tam=3;
             int puntajetabla[3],buncotabla[3], dado[3];
                 string nombretop[3];
@@ -38,122 +39,79 @@ int main()
 
 switch(opc){
 //MODO 1 JUGADOR//
- case 13: {string nombre1;
+ case 13: {string nombre[1];
+ int fallo[2],falloant[2],contbunco[2],lanzamiento[2],puntajeronda[2],puntajetot[2],puntajefinal[2],descuento[2],j=0,ronda=0,jugador=0,gano,i;
+         const int tam2=2;
+            CargarVectores(fallo,falloant,gano,contbunco,lanzamiento,puntajefinal,puntajeronda,puntajetot,descuento,tam2);
          rlutil::locate(53,11);cout <<"Nuevo juego"<<endl;
          rlutil::locate(53,12);cout <<"!Un Jugador!"<<endl;
          rlutil::locate(45,13);cout <<"Ingrese el nombre del jugador: "<<endl;
-         rlutil::locate(56,14);cin>>nombre1;
+         rlutil::locate(56,14);cin>>nombre[jugador];
          system("cls");
 
-for (i=1;i<=6;i++){
+for (i=1;i<=1;i++){
          do{
          j++;
             TirarDados();
             //TABLA DE RONDA//
-         rlutil::locate(30,1);cout<<"TURNO DE "<< nombre1<<" .";  cout<<" | "; cout<<"RONDA N°"<<i; cout<<" | "; cout<< "PUNTAJE ACUMULADO: " << puntajetot<< endl;
+         rlutil::locate(30,1);cout<<"TURNO DE "<< nombre[jugador]<<" .";  cout<<" | "; cout<<"RONDA N°"<<i; cout<<" | "; cout<< "PUNTAJE ACUMULADO: " << puntajetot[jugador]<< endl;
          rlutil::locate(20,2);cout<<"--------------------------------------------------------------------"<<endl;
-         rlutil::locate(42,3);cout<<"VECES QUE OBTUVO BUNCO: "<< contbunco<<endl;
+         rlutil::locate(42,3);cout<<"VECES QUE OBTUVO BUNCO: "<< contbunco[jugador]<<endl;
          rlutil::locate(25,4);cout<<"----------------------------------------------------------"<<endl;
          rlutil::locate(47,5);cout<<"LANZAMIENTO N°"<<j<<endl;
          rlutil::locate(30,6);cout<<"------------------------------------------------"<<endl;
 
          CargarDados(dado,tam);
 
+            //CARGA DE PUNTAJE//
+            CalculadorPuntajes(dado,contbunco,puntajeronda,fallo,i,jugador);
+            puntajetot[jugador]=puntajetot[jugador]+puntajeronda[jugador];
 
-           //CARGA DE PUNTAJE//
-            sumadados=dado[0]+dado[1]+dado[2];
 
-            if (dado[0]==dado[1] && dado[1]==dado[2] && dado[0]==i){
-            puntajeronda=21;
-            contbunco++;
-            }
-            else if (dado[0]==dado[1] && dado[1]==dado[2] && dado[0]!=i){
-            puntajeronda=5;
-            }
-            else if(sumadados%5==0){
-            puntajeronda=3;
-            }
-            else if (dado[0]==dado[1]-1 && dado[1]==dado[2]-1){
-            puntajeronda=2;
-            }
-            else if(dado[0]==i||dado[1]==i||dado[2]==i){
-            puntajeronda=1;
-            }
-            else{
-            puntajeronda=0;
-            contfail++;
-            }
 
-         puntajetot=puntajetot+puntajeronda;
+         puntajetot[jugador]=puntajetot[jugador]+puntajeronda[jugador];
 
          rlutil::locate(41,22);cout<<" *************************"<<endl;
-         rlutil::locate(41,23);cout<<"| "<<"PUNTAJE DE LA RONDA: "<<puntajeronda<<" |"<<endl;
+         rlutil::locate(41,23);cout<<"| "<<"PUNTAJE DE LA RONDA: "<<puntajeronda[jugador]<<" |"<<endl;
          rlutil::locate(41,24);cout<<" *************************"<<endl;
         //FIN TABLA DE RONDA//
          rlutil::locate(43,30);system("pause");
          system("cls");
          }
-         while(puntajetot<21);
+         while(puntajetot[jugador]<21);
 
         //TABLA ENTRE RONDAS//
 
          rlutil::locate(38,10);cout<<"--------------------------------------"<<endl;
-         rlutil::locate(39,11);cout<<"    PUNTAJE DE "<<nombre1<<": "<<puntajetot<<" PUNTOS."<<endl;
-         rlutil::locate(41,12);cout<<"    CANTIDAD DE BUNCOS: "<<contbunco<<"."<<endl;
-         rlutil::locate(37,13);cout<<"    CANTIDAD DE TIROS FALLIDOS: "<<contfail<<"."<<endl;
+         rlutil::locate(39,11);cout<<"    PUNTAJE DE "<<nombre[jugador]<<": "<<puntajetot[jugador]<<" PUNTOS."<<endl;
+         rlutil::locate(41,12);cout<<"    CANTIDAD DE BUNCOS: "<<contbunco[jugador]<<"."<<endl;
+         rlutil::locate(37,13);cout<<"    CANTIDAD DE TIROS FALLIDOS: "<<fallo[jugador]<<"."<<endl;
          rlutil::locate(38,14);cout<<"    CANTIDAD DE LANZAMIENTOS: "<<j<<"."<<endl;
          rlutil::locate(38,15);cout<<"--------------------------------------"<<endl;
          rlutil::locate(43,30);system("pause");
          system("cls");
 
-            puntajefinal=puntajefinal+puntajetot;
+            puntajefinal[jugador]=puntajefinal[jugador]+puntajetot[jugador];
 
-            puntajetot=0;
+            puntajetot[jugador]=0;
             j=0;
 
 
 
 }
-            descuento=contfail*2;
-            puntajefinal=puntajefinal-descuento;
+            descuento[jugador]=fallo[jugador]*2;
+            puntajefinal[jugador]=puntajefinal[jugador]-descuento[jugador];
         //TABLA FINAL DE JUEGO//
         rlutil::locate(38,10);cout<<"--------------------------------------"<<endl;
-        rlutil::locate(41,11);cout<<"En total tuvo: "<<contfail<<" tiros fallidos."<<endl;
-        rlutil::locate(38,12);cout<<"Se le descontaron un total de: "<<descuento<<" puntos."<<endl;
-        rlutil::locate(40,13);cout<<"El puntaje final de "<<nombre1<<" fue de: "<<puntajefinal<<"."<<endl;
-        rlutil::locate(42,14);cout<<"Obtuviste un total de: "<<contbunco<<" buncos."<<endl;
+        rlutil::locate(41,11);cout<<"En total tuvo: "<<fallo[jugador]<<" tiros fallidos."<<endl;
+        rlutil::locate(38,12);cout<<"Se le descontaron un total de: "<<descuento[jugador]<<" puntos."<<endl;
+        rlutil::locate(40,13);cout<<"El puntaje final de "<<nombre[jugador]<<" fue de: "<<puntajefinal[jugador]<<"."<<endl;
+        rlutil::locate(42,14);cout<<"Obtuviste un total de: "<<contbunco[jugador]<<" buncos."<<endl;
         rlutil::locate(38,15);cout<<"--------------------------------------"<<endl;
 
             //Comparador de puntajes para opcion 3//
-            if (puntajefinal>puntajetabla[0]){
-            puntajetabla[2]=puntajetabla[1];
-            buncotabla[2]=buncotabla[1];
-            nombretop[2]=nombretop[1];
-
-            puntajetabla[1]=puntajetabla[0];
-            buncotabla[1]=buncotabla[0];
-            nombretop[1]=nombretop[0];
-
-            puntajetabla[0]=puntajefinal;
-            buncotabla[0]=contbunco;
-            nombretop[0]=nombre1;
-            }
-
-            else if (puntajefinal>puntajetabla[1]){
-            puntajetabla[2]=puntajetabla[1];
-            buncotabla[2]=buncotabla[1];
-            nombretop[2]=nombretop[1];
-
-            puntajetabla[1]=puntajefinal;
-            buncotabla[1]=contbunco;
-            nombretop[1]=nombre1;
-            }
-            else if(puntajefinal>puntajetabla[2]){
-            puntajetabla[2]=puntajefinal;
-            buncotabla[2]=contbunco;
-            nombretop[2]=nombre1;
-            }
-contfail=0,puntajefinal=0;
+            tablaPuntajes(puntajefinal,puntajetabla,buncotabla,nombretop,jugador,nombre,contbunco);
+fallo[jugador]=0,puntajefinal[jugador]=0;
 
 
 }
@@ -201,28 +159,7 @@ contfail=0,puntajefinal=0;
 
         //CARGA DE PUNTAJE//
 
-            sumadados=dado[0]+dado[1]+dado[2];
-
-            if (dado[0]==dado[1] && dado[1]==dado[2] && dado[0]==i){
-            puntajeronda[jugador]=21;
-            contbunco[jugador]++;
-            }
-            else if (dado[0]==dado[1] && dado[1]==dado[2] && dado[0]!=i){
-            puntajeronda[jugador]=5;
-            }
-            else if(sumadados%5==0){
-            puntajeronda[jugador]=3;
-            }
-            else if (dado[0]==dado[1]-1 && dado[1]==dado[2]-1){
-            puntajeronda[jugador]=2;
-            }
-            else if(dado[0]==i||dado[1]==i||dado[2]==i){
-            puntajeronda[jugador]=1;
-            }
-            else{
-            puntajeronda[jugador]=0;
-            fallo[jugador]++;
-            }
+            CalculadorPuntajes(dado,contbunco,puntajeronda,fallo,i,jugador);
 
 
          puntajetot[jugador]=puntajetot[jugador]+puntajeronda[jugador];
@@ -345,8 +282,10 @@ case 15:
 //MODO SIMULACION//
  case 16:{
      //DECLARACION VARIABLES DEL CASO//
-     int buncosim=0, nsim;
-
+     int buncosim[1], fallo[1], nsim, jugador=0;
+    buncosim[0]=0;
+    fallo[0]=0;
+    puntajetot[0]=0;
           rlutil::locate(50,9);cout <<"Modo simulacion:"<<endl;
           rlutil::locate(27,13);cout <<"En este modo podra decidir el valor de los dados para simular jugadas."<<endl;
           rlutil::locate(38,15);cout <<"Ingrese cantidad de lanzamientos a simular: "<<endl;
@@ -360,7 +299,7 @@ case 15:
             rlutil::locate(42,15);cout<<"Ingrese valor del segundo dado: "<<endl;
             rlutil::locate(57,16);cin>>dado[1];
         system("cls");
-            rlutil::locate(42,15);cout<<"Ingrese valor del tercer dado: "<<endl   ;
+            rlutil::locate(42,15);cout<<"Ingrese valor del tercer dado: "<<endl;
             rlutil::locate(57,16);cin>>dado[2];
         system("cls");
 
@@ -368,51 +307,32 @@ case 15:
      //PUNTAJE DE RONDA//
          sumadados=dado[0]+dado[1]+dado[2];
 
-            if (dado[0]==dado[1] && dado[1]==dado[2] && dado[0]==i){
-            puntajeronda=21;
-            buncosim++;
-            }
-            else if (dado[0]==dado[1] && dado[1]==dado[2] && dado[0]!=i){
-            puntajeronda=5;
-            }
-            else if(sumadados%5==0){
-            puntajeronda=3;
-            }
-            else if (dado[0]==dado[1]-1 && dado[1]==dado[2]-1){
-            puntajeronda=2;
-            }
-            else if(dado[0]==i||dado[1]==i||dado[2]==i){
-            puntajeronda=1;
-            }
-            else{
-            puntajeronda=0;
-            contfail++;
-            }
+            CalculadorPuntajes(dado,buncosim,puntajeronda,fallo,i,jugador);
+
+        puntajetot[0]=puntajetot[0]+puntajeronda[0];
 
 
-
-            puntajetot=puntajetot+puntajeronda;
     //TABLA FIN DE RONDA//
          rlutil::locate(47,2);cout<<" MODO SIMULADO"<<endl;
          GraficoDados(dado);
          rlutil::locate(41,22);cout<<" *************************"<<endl;
-         rlutil::locate(43,23);cout<<"PUNTAJE DE LA RONDA: "<<puntajeronda<<"."<<endl;
-         rlutil::locate(41,24);cout<<"OBTUVO UN TOTAL DE: "<<buncosim<<" BUNCOS."<<endl;
+         rlutil::locate(43,23);cout<<"PUNTAJE DE LA RONDA: "<<puntajeronda[0]<<"."<<endl;
+         rlutil::locate(41,24);cout<<"OBTUVO UN TOTAL DE: "<<buncosim[jugador]<<" BUNCOS."<<endl;
          rlutil::locate(41,25);cout<<" *************************"<<endl;
          rlutil::locate(41,29);system("pause");
          system("cls");
           }
     //TABLA FIN DE JUEGO//
           rlutil::locate(27,10);cout<<" ***************************************************************"<<endl;
-         rlutil::locate(39,11);cout<<"    PUNTAJE SIMULADO TOTAL: "<<puntajetot<<" PUNTOS."<<endl;
-         rlutil::locate(41,12);cout<<"    CANTIDAD DE BUNCOS: "<<buncosim<<"."<<endl;
-         rlutil::locate(39,13);cout<<"    CANTIDAD DE TIROS FALLIDOS: "<<contfail<<"."<<endl;
+         rlutil::locate(39,11);cout<<"    PUNTAJE SIMULADO TOTAL: "<<puntajetot[0]<<" PUNTOS."<<endl;
+         rlutil::locate(41,12);cout<<"    CANTIDAD DE BUNCOS: "<<buncosim[jugador]<<"."<<endl;
+         rlutil::locate(39,13);cout<<"    CANTIDAD DE TIROS FALLIDOS: "<<fallo[jugador]<<"."<<endl;
          rlutil::locate(37,14);cout<<"    CANTIDAD DE LANZAMIENTOS SIMULADOS: "<<nsim<<"."<<endl;
          rlutil::locate(27,15);cout<<" ***************************************************************"<<endl;
         rlutil::locate(43,30);system("pause");
          system("cls");
 
-    contfail=0,puntajetot=0;
+puntajetot[0]=0;
  }
     rlutil::locate(43,30);break;
 
